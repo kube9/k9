@@ -1,0 +1,2 @@
+K9SERVER_OPENAPI_SPEC_FILE = ./openapi/k9server/openapi.yaml
+K9SERVER_OPENAPI_GEN_DIR = ./pkg/gen/k9server/

@@ -1,0 +1,128 @@
+---
+swagger: "2.0"
+info:
+  description: "K9 Server is the main api server..."
+  version: "1.0.0"
+  title: "K9 Server"
+host: "127.0.0.1:3000"
+basePath: "/api/v1"
+tags:
+- name: "zone"
+  description: "All zone endpoints"
+schemes:
+- "http"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /zones:
+    post:
+      description: Create a new zone
+      summary: Create a new zone in the k9 server
+      operationId: createZone
+      tags: 
+      - zone
+      parameters:
+      - name: zone
+        in: body
+        description: Zone to create
+        required: true
+        schema:
+          $ref: '#/definitions/CreateZoneRequest'
+      responses:
+        201:
+          description: OK
+          schema:
+            $ref: '#/definitions/CreateZoneResponse'
+        400:
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    get:
+      description: Get all zones
+      summary: Gets all zones from the K9 api server
+      operationId: getZones
+      tags:
+      - zone
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/GetZonesResponse'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /zones/{zoneId}:
+    delete:
+      summary: Delete a zone from k9 server 
+      description: Delete a zone
+      operationId: deleteZone
+      tags:
+      - zone
+      parameters:
+      - in: path
+        name: zoneId
+        required: true
+        description: id of zone to delete
+        type: string
+      responses:
+        204:
+          description: OK
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        500:
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+definitions:
+  NewZone:
+    type: object
+    properties:
+      name:
+        type: string
+        x-go-custom-tag: "bson:\"name\""
+    required:
+    - name
+  Zone:
+    type: object
+    allOf: 
+    - $ref: '#/definitions/NewZone'
+    - type: object
+      properties:
+        id:
+          type: string
+          x-go-custom-tag: "bson:\"_id\""
+      required:
+        - id
+  ZoneList:
+    type: array
+    items:
+      $ref: '#/definitions/Zone'
+  ErrorResponse:
+    type: object
+    properties:
+      error_code:
+        type: integer
+        format: int32
+      error_message:
+        type: string
+    required: 
+    - error_code
+    - error_message
+  GetZonesResponse:
+    allOf:
+    - $ref: '#/definitions/ZoneList'
+  CreateZoneRequest:
+    allOf: 
+    - $ref: '#/definitions/NewZone'
+  CreateZoneResponse:
+    allOf: 
+    - $ref: '#/definitions/Zone'
