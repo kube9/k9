@@ -1,0 +1,73 @@
+################################
+# k9-system namespace
+################################
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: k9-system
+---
+################################
+# k9-server deployment
+################################
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: k9-server-v1
+  namespace: k9-system
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        id: k9-server
+        version: v1
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9090"
+    spec:
+      containers:
+      - name: k9-server
+        image: kube9/k9
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http 
+          containerPort: 3000
+        - name: prometheus
+          containerPort: 9090
+---
+################################
+# k9-server service
+################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: k9-server
+  namespace: k9-system
+  labels:
+    id: k9-server
+spec:
+  ports:
+  - port: 3000
+    name: http
+  selector:
+    id: k9-server
+---
+################################
+# k9-server ingress
+################################
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k9-server
+  namespace: k9-system
+  annotations:
+    kubernetes.io/ingress.class: "istio"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /api/v1.*
+        backend:
+          serviceName: k9-server
+          servicePort: 3000
+---
