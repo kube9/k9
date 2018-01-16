@@ -50,7 +50,7 @@ Flags:
 Use "k9ctl [command] --help" for more information about a command.
 ```
 
-## k9ctl CLI Get all zones
+## k9ctl CLI List all zones
 ```
 $ ./bin/k9ctl zones list
 ID                                    |NAME
@@ -60,7 +60,7 @@ d5045e80-b602-4e7c-a04a-7a1a6f4efa32  |zone 2
 82f1944e-87f1-4736-bf33-226232eb3569  |zone 4
 ```
 
-## k9ctl CLI Get all zones (as json)
+## k9ctl CLI List all zones (as json)
 ```
 $ ./bin/k9ctl zones list -o json
 [
@@ -90,7 +90,7 @@ ID                                    |NAME
 a603abc4-246f-4069-8851-c89549d66547  |myZone
 ```
 
-## k9ctl CLI Create a new zone
+## k9ctl CLI Delete a zone
 ```
 $ ./bin/k9ctl zones delete 468be827-dc13-4e15-87f4-a556181d6d42
 ```
