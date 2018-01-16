@@ -17,9 +17,9 @@ import (
 
 func main() {
 	// setup prometheus
-	http.Handle("/metrics", promhttp.Handler())
 	go func() {
-		panic(http.ListenAndServe(":8080", nil))
+		http.Handle("/metrics", promhttp.Handler())
+		panic(http.ListenAndServe(":9090", nil))
 	}()
 
 	// load embedded swagger file

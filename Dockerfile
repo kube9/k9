@@ -2,6 +2,8 @@ FROM golang:1.9 as builder
 RUN mkdir -p /go/src/github.com/kube9/k9/
 WORKDIR /go/src/github.com/kube9/k9/
 COPY . .
+RUN go get -u github.com/golang/dep/cmd/dep
+RUN dep ensure
 RUN make k9server-build
 
 FROM alpine:latest as final
