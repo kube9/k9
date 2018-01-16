@@ -4,9 +4,9 @@ import (
 	"flag"
 	"log"
 
-	"github.com/kube9/k9/pkg/k9server/apis"
-	"github.com/kube9/k9/pkg/k9server/datas"
-	"github.com/kube9/k9/pkg/k9server/handlers"
+	"github.com/kube9/k9/internal/k9server/apis"
+	"github.com/kube9/k9/internal/k9server/datas"
+	"github.com/kube9/k9/internal/k9server/handlers"
 
 	"github.com/go-openapi/loads"
 	"github.com/kube9/k9/pkg/gen/k9server/server"

@@ -1,8 +1,8 @@
 package apis
 
 import (
+	"github.com/kube9/k9/internal/k9server/datas"
 	"github.com/kube9/k9/pkg/gen/k9server/models"
-	"github.com/kube9/k9/pkg/k9server/datas"
 	uuid "github.com/satori/go.uuid"
 )
 

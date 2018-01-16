@@ -3,8 +3,8 @@ package datas
 import (
 	"sync"
 
+	"github.com/kube9/k9/internal/k9server/errors"
 	"github.com/kube9/k9/pkg/gen/k9server/models"
-	"github.com/kube9/k9/pkg/k9server/errors"
 	uuid "github.com/satori/go.uuid"
 )
 

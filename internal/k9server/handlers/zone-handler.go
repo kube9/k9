@@ -2,11 +2,11 @@ package handlers
 
 import (
 	"github.com/go-openapi/runtime/middleware"
+	"github.com/kube9/k9/internal/k9server/apis"
+	"github.com/kube9/k9/internal/k9server/errors"
 	"github.com/kube9/k9/pkg/gen/k9server/models"
 	"github.com/kube9/k9/pkg/gen/k9server/server/operations"
 	"github.com/kube9/k9/pkg/gen/k9server/server/operations/zone"
-	"github.com/kube9/k9/pkg/k9server/apis"
-	"github.com/kube9/k9/pkg/k9server/errors"
 )
 
 // ZoneHandler ...
