@@ -58,17 +58,7 @@
 [[projects]]
   branch = "master"
   name = "github.com/go-openapi/runtime"
-  packages = [
-    ".",
-    "client",
-    "flagext",
-    "logger",
-    "middleware",
-    "middleware/denco",
-    "middleware/header",
-    "middleware/untyped",
-    "security"
-  ]
+  packages = [".","client","flagext","logger","middleware","middleware/denco","middleware/header","middleware/untyped","security"]
   revision = "a76104f379d3c5041f2a56e69db3ad8404ce4826"
 
 [[projects]]
@@ -110,11 +100,7 @@
 [[projects]]
   branch = "master"
   name = "github.com/mailru/easyjson"
-  packages = [
-    "buffer",
-    "jlexer",
-    "jwriter"
-  ]
+  packages = ["buffer","jlexer","jwriter"]
   revision = "32fa128f234d041f196a9f3e0fea5ac9772c08e1"
 
 [[projects]]
@@ -150,42 +136,19 @@
 [[projects]]
   branch = "master"
   name = "golang.org/x/net"
-  packages = [
-    "context",
-    "context/ctxhttp",
-    "idna"
-  ]
+  packages = ["context","context/ctxhttp","idna"]
   revision = "5ccada7d0a7ba9aeb5d3aca8d3501b4c2a509fec"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/text"
-  packages = [
-    "collate",
-    "collate/build",
-    "internal/colltab",
-    "internal/gen",
-    "internal/tag",
-    "internal/triegen",
-    "internal/ucd",
-    "language",
-    "secure/bidirule",
-    "transform",
-    "unicode/bidi",
-    "unicode/cldr",
-    "unicode/norm",
-    "unicode/rangetable",
-    "width"
-  ]
+  packages = ["collate","collate/build","internal/colltab","internal/gen","internal/tag","internal/triegen","internal/ucd","language","secure/bidirule","transform","unicode/bidi","unicode/cldr","unicode/norm","unicode/rangetable","width"]
   revision = "e19ae1496984b1c655b8044a65c0300a3c878dd3"
 
 [[projects]]
   branch = "v2"
   name = "gopkg.in/mgo.v2"
-  packages = [
-    "bson",
-    "internal/json"
-  ]
+  packages = [".","bson","internal/json","internal/sasl","internal/scram"]
   revision = "3f83fa5005286a7fe593b055f0d7771a7dce4655"
 
 [[projects]]
@@ -196,16 +159,13 @@
 
 [[projects]]
   name = "k8s.io/client-go"
-  packages = [
-    "third_party/forked/golang/template",
-    "util/jsonpath"
-  ]
+  packages = ["third_party/forked/golang/template","util/jsonpath"]
   revision = "78700dec6369ba22221b72770783300f143df150"
   version = "v6.0.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "07d58dedc0489c9f78e5b5dcf535accced42e4643ac32fa12f3c62d09ef4a6d6"
+  inputs-digest = "a702a5d2efbdf01410b4a5c4964c604b7a965222b9149bee6aa6d4edf8ffbb42"
   solver-name = "gps-cdcl"
   solver-version = 1
