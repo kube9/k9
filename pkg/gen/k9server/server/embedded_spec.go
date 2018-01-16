@@ -36,6 +36,24 @@ func init() {
   "host": "127.0.0.1:3000",
   "basePath": "/api/v1",
   "paths": {
+    "/version": {
+      "get": {
+        "description": "Get version info",
+        "tags": [
+          "info"
+        ],
+        "summary": "Returns the version info from the k9 server",
+        "operationId": "getVersion",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
     "/zones": {
       "get": {
         "description": "Get all zones",
@@ -215,8 +233,11 @@ func init() {
   },
   "tags": [
     {
-      "description": "All zone endpoints",
       "name": "zone"
+    },
+    {
+      "description": "All zone endpoints",
+      "name": "info"
     }
   ]
 }`))
@@ -239,6 +260,24 @@ func init() {
   "host": "127.0.0.1:3000",
   "basePath": "/api/v1",
   "paths": {
+    "/version": {
+      "get": {
+        "description": "Get version info",
+        "tags": [
+          "info"
+        ],
+        "summary": "Returns the version info from the k9 server",
+        "operationId": "getVersion",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
     "/zones": {
       "get": {
         "description": "Get all zones",
@@ -422,8 +461,11 @@ func init() {
   },
   "tags": [
     {
-      "description": "All zone endpoints",
       "name": "zone"
+    },
+    {
+      "description": "All zone endpoints",
+      "name": "info"
     }
   ]
 }`))

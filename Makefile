@@ -26,11 +26,11 @@ k9server-gen-openapi-client:
 	swagger generate client -t $(K9SERVER_OPENAPI_GEN_DIR) -f $(K9SERVER_OPENAPI_SPEC_FILE)
 
 k9server-build:
-	go build -o ./bin/k9server ./cmd/k9server/main.go
+	go build -i $(GOBUILD) -o ./bin/k9server ./cmd/k9server/main.go
 
 k9server-clean:
 
 k9ctl-build:
-	go build -o ./bin/k9ctl ./cmd/k9ctl/main.go
+	go build -i $(GOBUILD) -o ./bin/k9ctl ./cmd/k9ctl/main.go
 
 k9ctl-clean:

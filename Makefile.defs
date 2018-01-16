@@ -1,2 +1,7 @@
 K9SERVER_OPENAPI_SPEC_FILE = ./openapi/k9server/openapi.yaml
 K9SERVER_OPENAPI_GEN_DIR = ./pkg/gen/k9server/
+
+VERSION = $(shell cat $(dir $(lastword $(MAKEFILE_LIST)))/VERSION)
+GIT_VERSION = $(shell git show -s --format='format:%h %aI')
+BUILD = $(VERSION) $(GIT_VERSION) $(shell go version)
+GOBUILD = -ldflags '-X "github.com/kube9/k9/pkg/version.Version=$(BUILD)"'

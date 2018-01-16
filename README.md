@@ -42,12 +42,20 @@ Usage:
 
 Available Commands:
   help        Help about any command
+  version     Print version information
   zones       Manage zones
 
 Flags:
   -h, --help   help for k9ctl
 
 Use "k9ctl [command] --help" for more information about a command.
+```
+
+## k9ctl CLI Version
+```
+$ ./bin/k9ctl version
+Client: 0.0.1 29bc88e 2018-01-16T13:07:55+01:00 go version go1.9.2 linux/amd64
+Server: 0.0.1 29bc88e 2018-01-16T13:07:55+01:00 go version go1.9.2 linux/amd64
 ```
 
 ## k9ctl CLI List all zones

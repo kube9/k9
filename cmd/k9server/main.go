@@ -37,6 +37,8 @@ func main() {
 	zoneAPI := apis.NewZoneAPI(zoneData)
 
 	// Create handlers
+	versionHandler := handlers.NewVersionHandler()
+	versionHandler.RegisterEndpoints(openapi)
 	zoneHandler := handlers.NewZoneHandler(zoneAPI)
 	zoneHandler.RegisterEndpoints(openapi)
 

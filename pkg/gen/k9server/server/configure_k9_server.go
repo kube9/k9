@@ -12,6 +12,7 @@ import (
 	graceful "github.com/tylerb/graceful"
 
 	"github.com/kube9/k9/pkg/gen/k9server/server/operations"
+	"github.com/kube9/k9/pkg/gen/k9server/server/operations/info"
 	"github.com/kube9/k9/pkg/gen/k9server/server/operations/zone"
 )
 
@@ -42,6 +43,9 @@ func configureAPI(api *operations.K9ServerAPI) http.Handler {
 	})
 	api.ZoneDeleteZoneHandler = zone.DeleteZoneHandlerFunc(func(params zone.DeleteZoneParams) middleware.Responder {
 		return middleware.NotImplemented("operation zone.DeleteZone has not yet been implemented")
+	})
+	api.InfoGetVersionHandler = info.GetVersionHandlerFunc(func(params info.GetVersionParams) middleware.Responder {
+		return middleware.NotImplemented("operation info.GetVersion has not yet been implemented")
 	})
 	api.ZoneGetZonesHandler = zone.GetZonesHandlerFunc(func(params zone.GetZonesParams) middleware.Responder {
 		return middleware.NotImplemented("operation zone.GetZones has not yet been implemented")

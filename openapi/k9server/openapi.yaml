@@ -8,6 +8,7 @@ host: "127.0.0.1:3000"
 basePath: "/api/v1"
 tags:
 - name: "zone"
+- name: "info"
   description: "All zone endpoints"
 schemes:
 - "http"
@@ -16,6 +17,18 @@ consumes:
 produces:
 - "application/json"
 paths:
+  /version:
+    get:
+      description: Get version info
+      summary: Returns the version info from the k9 server
+      operationId: getVersion
+      tags:
+      - info
+      responses:
+        200:
+          description: ok
+          schema:
+            type: string
   /zones:
     post:
       description: Create a new zone

@@ -11,6 +11,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
+	"github.com/kube9/k9/pkg/gen/k9server/client/info"
 	"github.com/kube9/k9/pkg/gen/k9server/client/zone"
 )
 
@@ -54,6 +55,8 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *K9S
 func New(transport runtime.ClientTransport, formats strfmt.Registry) *K9Server {
 	cli := new(K9Server)
 	cli.Transport = transport
+
+	cli.Info = info.New(transport, formats)
 
 	cli.Zone = zone.New(transport, formats)
 
@@ -101,6 +104,8 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 
 // K9Server is a client for k9 server
 type K9Server struct {
+	Info *info.Client
+
 	Zone *zone.Client
 
 	Transport runtime.ClientTransport
@@ -109,6 +114,8 @@ type K9Server struct {
 // SetTransport changes the transport on the client and all its subresources
 func (c *K9Server) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
+
+	c.Info.SetTransport(transport)
 
 	c.Zone.SetTransport(transport)
 

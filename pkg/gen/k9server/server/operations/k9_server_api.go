@@ -19,6 +19,7 @@ import (
 	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
+	"github.com/kube9/k9/pkg/gen/k9server/server/operations/info"
 	"github.com/kube9/k9/pkg/gen/k9server/server/operations/zone"
 )
 
@@ -44,6 +45,9 @@ func NewK9ServerAPI(spec *loads.Document) *K9ServerAPI {
 		}),
 		ZoneDeleteZoneHandler: zone.DeleteZoneHandlerFunc(func(params zone.DeleteZoneParams) middleware.Responder {
 			return middleware.NotImplemented("operation ZoneDeleteZone has not yet been implemented")
+		}),
+		InfoGetVersionHandler: info.GetVersionHandlerFunc(func(params info.GetVersionParams) middleware.Responder {
+			return middleware.NotImplemented("operation InfoGetVersion has not yet been implemented")
 		}),
 		ZoneGetZonesHandler: zone.GetZonesHandlerFunc(func(params zone.GetZonesParams) middleware.Responder {
 			return middleware.NotImplemented("operation ZoneGetZones has not yet been implemented")
@@ -83,6 +87,8 @@ type K9ServerAPI struct {
 	ZoneCreateZoneHandler zone.CreateZoneHandler
 	// ZoneDeleteZoneHandler sets the operation handler for the delete zone operation
 	ZoneDeleteZoneHandler zone.DeleteZoneHandler
+	// InfoGetVersionHandler sets the operation handler for the get version operation
+	InfoGetVersionHandler info.GetVersionHandler
 	// ZoneGetZonesHandler sets the operation handler for the get zones operation
 	ZoneGetZonesHandler zone.GetZonesHandler
 
@@ -154,6 +160,10 @@ func (o *K9ServerAPI) Validate() error {
 
 	if o.ZoneDeleteZoneHandler == nil {
 		unregistered = append(unregistered, "zone.DeleteZoneHandler")
+	}
+
+	if o.InfoGetVersionHandler == nil {
+		unregistered = append(unregistered, "info.GetVersionHandler")
 	}
 
 	if o.ZoneGetZonesHandler == nil {
@@ -267,6 +277,11 @@ func (o *K9ServerAPI) initHandlerCache() {
 		o.handlers["DELETE"] = make(map[string]http.Handler)
 	}
 	o.handlers["DELETE"]["/zones/{zoneId}"] = zone.NewDeleteZone(o.context, o.ZoneDeleteZoneHandler)
+
+	if o.handlers["GET"] == nil {
+		o.handlers["GET"] = make(map[string]http.Handler)
+	}
+	o.handlers["GET"]["/version"] = info.NewGetVersion(o.context, o.InfoGetVersionHandler)
 
 	if o.handlers["GET"] == nil {
 		o.handlers["GET"] = make(map[string]http.Handler)
