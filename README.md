@@ -102,3 +102,6 @@ a603abc4-246f-4069-8851-c89549d66547  |myZone
 ```
 $ ./bin/k9ctl zones delete 468be827-dc13-4e15-87f4-a556181d6d42
 ```
+
+## k9server prometheus
+open browser at http://{k9server-ip:8080}/metrics to collect prometheus metrics

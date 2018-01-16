@@ -5,7 +5,6 @@ import (
 
 	"github.com/kube9/k9/internal/k9server/errors"
 	"github.com/kube9/k9/pkg/gen/k9server/models"
-	uuid "github.com/satori/go.uuid"
 )
 
 var data models.ZoneList
@@ -17,9 +16,7 @@ type ZoneDataMock struct {
 
 // NewZoneDataMock ctor function
 func NewZoneDataMock() *ZoneDataMock {
-	mock := ZoneDataMock{}
-	go mock.init()
-	return &mock
+	return &ZoneDataMock{}
 }
 
 // CreateOne creates a new zone
@@ -52,73 +49,4 @@ func (z *ZoneDataMock) DeleteOneByID(id string) error {
 	}
 
 	return errors.ErrIDNotFound
-}
-
-func (z *ZoneDataMock) init() {
-	z.Lock()
-	defer z.Unlock()
-
-	{
-		name := "zone 1"
-		id := uuid.NewV4().String()
-
-		item1 := models.Zone{
-			NewZone: models.NewZone{
-				Name: &name,
-			},
-			ZoneAllOf1: models.ZoneAllOf1{
-				ID: &id,
-			},
-		}
-
-		data = append(data, &item1)
-	}
-
-	{
-		name := "zone 2"
-		id := uuid.NewV4().String()
-
-		item1 := models.Zone{
-			NewZone: models.NewZone{
-				Name: &name,
-			},
-			ZoneAllOf1: models.ZoneAllOf1{
-				ID: &id,
-			},
-		}
-
-		data = append(data, &item1)
-	}
-
-	{
-		name := "zone 3"
-		id := uuid.NewV4().String()
-
-		item1 := models.Zone{
-			NewZone: models.NewZone{
-				Name: &name,
-			},
-			ZoneAllOf1: models.ZoneAllOf1{
-				ID: &id,
-			},
-		}
-
-		data = append(data, &item1)
-	}
-
-	{
-		name := "zone 4"
-		id := uuid.NewV4().String()
-
-		item1 := models.Zone{
-			NewZone: models.NewZone{
-				Name: &name,
-			},
-			ZoneAllOf1: models.ZoneAllOf1{
-				ID: &id,
-			},
-		}
-
-		data = append(data, &item1)
-	}
 }

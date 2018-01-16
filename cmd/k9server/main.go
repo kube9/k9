@@ -3,10 +3,12 @@ package main
 import (
 	"flag"
 	"log"
+	"net/http"
 
 	"github.com/kube9/k9/internal/k9server/apis"
 	"github.com/kube9/k9/internal/k9server/datas"
 	"github.com/kube9/k9/internal/k9server/handlers"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 
 	"github.com/go-openapi/loads"
 	"github.com/kube9/k9/pkg/gen/k9server/server"
@@ -14,6 +16,12 @@ import (
 )
 
 func main() {
+	// setup prometheus
+	http.Handle("/metrics", promhttp.Handler())
+	go func() {
+		panic(http.ListenAndServe(":8080", nil))
+	}()
+
 	// load embedded swagger file
 	swaggerSpec, err := loads.Analyzed(server.SwaggerJSON, "")
 	if err != nil {
